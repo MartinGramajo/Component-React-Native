@@ -32,7 +32,7 @@ export const FlatListMenuItem = ({ menuItem }: Props) => {
                 <Icon
                     name="chevron-forward-outline"
                     size={23}
-                    color="gray"
+                    color="#5856D6"
                 />
             </View>
         </TouchableOpacity>
