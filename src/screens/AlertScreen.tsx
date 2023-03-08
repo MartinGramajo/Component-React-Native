@@ -1,5 +1,9 @@
 import React from 'react';
 import { Alert, Button, View } from 'react-native';
+
+import prompt from 'react-native-prompt-android';
+
+
 import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/appTheme';
 
@@ -32,22 +36,37 @@ export const AlertScreen = () => {
     );
   };
 
-  // Esto es solo para IOS
+
+  // librería para prompt (ios-android)
+  //  npm i react-native-prompt-android
   const showPrompt = () => {
-    Alert.prompt(
-      // title
-      'Esta seguro?',
-      'Esta acción no se puede repetir',
-      //callback o arreglo de botones 
-      (valor: string) => console.log('info: ', valor),
-      // Acción o tipo de acciones.
-      'plain-text',
-      // Placeholder o default value.
-      'hola mundo',
-      //keyboard Type 
-      'email-address',
-
-
+    // Esto es solo para IOS
+    //   Alert.prompt(
+    //     // title
+    //     'Esta seguro?',
+    //     'Esta acción no se puede repetir',
+    //     //callback o arreglo de botones 
+    //     (valor: string) => console.log('info: ', valor),
+    //     // Acción o tipo de acciones.
+    //     'plain-text',
+    //     // Placeholder o default value.
+    //     'hola mundo',
+    //     //keyboard Type 
+    //     'email-address',
+    //   )
+    prompt(
+      'Enter password',
+      'Enter your password to claim your $1.5B in lottery winnings',
+      [
+        { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+        { text: 'OK', onPress: password => console.log('OK Pressed, password: ' + password) },
+      ],
+      {
+        type: 'secure-text',
+        cancelable: false,
+        defaultValue: 'test',
+        placeholder: 'Ingresa tu password'
+      }
     )
   };
 
@@ -56,19 +75,15 @@ export const AlertScreen = () => {
     <View style={{ ...styles.globalMargin, flex: 1 }}>
       <HeaderTitle title="Alerts" />
       <View style={styles.contentCenter}>
-        <View style={{ marginVertical: 20 }}>
-          <Button
-            title="Mostrar alert"
-            onPress={showAlert}
-          />
-        </View>
-
-        <View>
-          <Button
-            title="Mostrar Prompt"
-            onPress={showPrompt}
-          />
-        </View>
+        <Button
+          title="Mostrar alert"
+          onPress={showAlert}
+        />
+        <View style={{ height: 10 }} />
+        <Button
+          title="Mostrar Prompt"
+          onPress={showPrompt}
+        />
       </View>
     </View>
   );
