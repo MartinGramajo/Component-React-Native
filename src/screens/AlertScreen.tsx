@@ -32,16 +32,45 @@ export const AlertScreen = () => {
     );
   };
 
+  // Esto es solo para IOS
+  const showPrompt = () => {
+    Alert.prompt(
+      // title
+      'Esta seguro?',
+      'Esta acción no se puede repetir',
+      //callback o arreglo de botones 
+      (valor: string) => console.log('info: ', valor),
+      // Acción o tipo de acciones.
+      'plain-text',
+      // Placeholder o default value.
+      'hola mundo',
+      //keyboard Type 
+      'email-address',
+
+
+    )
+  };
+
 
   return (
-    <View style={styles.globalMargin}>
+    <View style={{ ...styles.globalMargin, flex: 1 }}>
       <HeaderTitle title="Alerts" />
+      <View style={styles.contentCenter}>
+        <View style={{ marginVertical: 20 }}>
+          <Button
+            title="Mostrar alert"
+            onPress={showAlert}
+          />
+        </View>
 
-      <Button
-        title="Mostrar alert"
-        onPress={showAlert}
-      />
-
+        <View>
+          <Button
+            title="Mostrar Prompt"
+            onPress={showPrompt}
+          />
+        </View>
+      </View>
     </View>
   );
 };
+
