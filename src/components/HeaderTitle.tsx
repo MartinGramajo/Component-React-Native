@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 35,
-    fontWeight: 'bold'
+    fontSize: 30,
+    fontWeight: '800'
   }
 });

@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import { FlatListMenuItem } from '../components/FlatListMenuItem';
 import { menuItems } from '../data/menuItem';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ItemSeparator } from '../components/ItemSeparator';
 
 
 export const HomeScreens = () => {
@@ -21,18 +22,18 @@ export const HomeScreens = () => {
 
 
     //Element o component para utilizar como separador en el ItemSeparatorComponent dentro del FlatList. 
-    const renderItemSeparator = () => {
-        return (
-            <View
-                style={{
-                    borderBottomWidth: 2,
-                    opacity: 0.4,
-                    marginVertical: 8
-                }}
-            />
+    // const ItemSeparator = () => {
+    //     return (
+    //         <View
+    //             style={{
+    //                 borderBottomWidth: 2,
+    //                 opacity: 0.4,
+    //                 marginVertical: 8
+    //             }}
+    //         />
 
-        )
-    }
+    //     )
+    // }
 
 
     return (
@@ -62,7 +63,7 @@ export const HomeScreens = () => {
                 ListHeaderComponent={() => <HeaderTitle title="Opciones de Menu" />}
 
                 //Item separador: component para separa cada elemento de mi list.
-                ItemSeparatorComponent={() => renderItemSeparator()}
+                ItemSeparatorComponent={() => <ItemSeparator />}
             />
 
         </View>
