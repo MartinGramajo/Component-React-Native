@@ -11,7 +11,12 @@ export const useAnimation = () => {
     // esta tendra por valor 'position'. 
     const position = useRef(new Animated.Value(0)).current;
 
-    const fadeIn = () => {
+    // en el fadeIn podemos mandar por argumento la duración 
+    // con la cual se va a producir el fadeIn.
+    // Esto nos permitirá en donde usemos nuestro custom hook
+    // enviarle nosotros que tiempo o duración queremos para la animación
+    // ejemplo como lo utilizamos en el component <FadeInImage />
+    const fadeIn = (duration: number = 300) => {
         // Posee 2 argumentos:
         // Timing function: dispara una animación por tiempo.
         Animated.timing(
@@ -19,7 +24,7 @@ export const useAnimation = () => {
             // Timing Animation configuration 
             {
                 toValue: 1,
-                duration: 3000,
+                duration,
                 useNativeDriver: true,
             }
             // .start() para que la animación empiece. 
@@ -27,7 +32,8 @@ export const useAnimation = () => {
             // el endCallback es una function que se dispara 
             // cuando termine la animación.
             // ejemplo el log que dice "animación termino".
-        ).start(() => console.log('animación termino'));
+            // ).start(() => console.log('animación termino'));
+        ).start();
 
 
     }
