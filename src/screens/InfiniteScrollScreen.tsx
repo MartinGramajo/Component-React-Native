@@ -30,7 +30,13 @@ export const InfiniteScrollScreen = () => {
 
   const renderItem = (item: number) => {
     return (
-      <FadeInImage uri={`https://picsum.photos/id/${item}/500/400`} />
+      <FadeInImage
+        uri={`https://picsum.photos/id/${item}/500/400`}
+        style={{
+          width: '100%',
+          height: 400
+        }}
+      />
 
     );
     // <Image
@@ -47,7 +53,11 @@ export const InfiniteScrollScreen = () => {
       <FlatList
         data={numbers}
         keyExtractor={(item) => item.toString()}
-        ListHeaderComponent={<HeaderTitle title="Infinite Scroll" />}
+        ListHeaderComponent={() => (
+          <View style={{ marginHorizontal: 20 }}>
+            <HeaderTitle title="Infinite Scroll" />
+          </View>
+        )}
         renderItem={({ item }) => renderItem(item)}
         //Function importante 
         // cuando llegamos a la unidad que indicamos en la function onEndReachedThreshold={}
