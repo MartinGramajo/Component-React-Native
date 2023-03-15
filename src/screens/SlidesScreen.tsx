@@ -196,15 +196,7 @@ export const SlidesScreen = ({ navigation }: Props) => {
         <Animated.View style={{
           opacity
         }} >
-          <TouchableOpacity style={{
-            flexDirection: 'row',
-            backgroundColor: '#5856d6',
-            width: 140,
-            height: 50,
-            borderRadius: 10,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
+          <TouchableOpacity style={styles.touchableBtn}
             activeOpacity={0.8}
             onPress={() => {
               if (isVisible.current) {
@@ -222,9 +214,6 @@ export const SlidesScreen = ({ navigation }: Props) => {
         </Animated.View>
       </View>
     </SafeAreaView >
-
-    //solución de clase a la tarea
-
   );
 };
 
@@ -236,5 +225,14 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 16,
+  },
+  touchableBtn: {
+    flexDirection: 'row',
+    backgroundColor: '#5856d6',
+    width: 140,
+    height: 50,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
