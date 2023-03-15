@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Carousel from 'react-native-snap-carousel';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 
 import { HeaderTitle } from '../components/HeaderTitle'
@@ -37,6 +37,9 @@ const items: Slide[] = [
 ]
 
 export const SlidesScreen = () => {
+
+  //state para volver a cargar el elemento con cada indicador en su posicion
+  const [activeIndex, setActiveIndex] = useState(0);
 
   //Function para renderizar cada uno de los items
   const renderItem = (item: Slide) => {
@@ -90,6 +93,33 @@ export const SlidesScreen = () => {
 
         //layout= lo dejamos en default.
         layout="default"
+
+        //onSnapToItem= nos permite extraer el valor (number)
+        // de la posición actual del item.
+        // lo utilizamos para mover el indicador de elementos
+        // junto con un state que creamos para ir variando ese number.
+        onSnapToItem={(index) => {
+          setActiveIndex(index)
+        }}
+      />
+      <Pagination
+        //dotsLength: sirve para indicar cuanto elementos tengo en mi slide
+        dotsLength={items.length}
+
+        //activeDotIndex: indicador del item actual del slide
+        //AGREGAMOS:el state de los indicadores activos.
+        activeDotIndex={activeIndex}
+
+        //dotColor: cambia el color del indicador
+        // dotColor="red"
+
+        //dotStyle: agrega estilos al dot
+        dotStyle={{
+          width: 10,
+          height: 10,
+          borderRadius: 5,
+          backgroundColor: '#5856D6'
+        }}
       />
     </SafeAreaView>
   );
