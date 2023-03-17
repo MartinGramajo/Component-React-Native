@@ -147,52 +147,7 @@ export const SlidesScreen = ({ navigation }: Props) => {
             backgroundColor: '#5856D6'
           }}
         />
-        {/* <View style={{ flex: 1 }} /> */}
-        {/* {activeIndex === 2 && <TouchableOpacity style={{
-          flexDirection: 'row',
-          backgroundColor: '#5856d6',
-          width: 140,
-          height: 50,
-          borderRadius: 10,
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-          activeOpacity={0.8}
-          onPress={() => navigate('HomeScreens')}
-        >
-          <Text style={{ fontSize: 20, color: 'white' }}> Entrar</Text>
-          <Icon
-            name="chevron-forward-outline"
-            color="white"
-            size={30}
-          />
-        </TouchableOpacity>} */}
-        {/* {
-          isVisible && (
-            <Animated.View style={{
-              opacity
-            }} >
-              <TouchableOpacity style={{
-                flexDirection: 'row',
-                backgroundColor: '#5856d6',
-                width: 140,
-                height: 50,
-                borderRadius: 10,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-                activeOpacity={0.8}
-                onPress={() => navigate('HomeScreens')}
-              >
-                <Text style={{ fontSize: 20, color: 'white' }}> Entrar</Text>
-                <Icon
-                  name="chevron-forward-outline"
-                  color="white"
-                  size={30}
-                />
-              </TouchableOpacity>
-            </Animated.View>)
-        } */}
+
         <Animated.View style={{
           opacity
         }} >
@@ -236,3 +191,50 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+{/* <View style={{ flex: 1 }} /> */ }
+{/* {activeIndex === 2 && <TouchableOpacity style={{
+          flexDirection: 'row',
+          backgroundColor: '#5856d6',
+          width: 140,
+          height: 50,
+          borderRadius: 10,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+          activeOpacity={0.8}
+          onPress={() => navigate('HomeScreens')}
+        >
+          <Text style={{ fontSize: 20, color: 'white' }}> Entrar</Text>
+          <Icon
+            name="chevron-forward-outline"
+            color="white"
+            size={30}
+          />
+        </TouchableOpacity>} */}
+{/* {
+          isVisible && (
+            <Animated.View style={{
+              opacity
+            }} >
+              <TouchableOpacity style={{
+                flexDirection: 'row',
+                backgroundColor: '#5856d6',
+                width: 140,
+                height: 50,
+                borderRadius: 10,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+                activeOpacity={0.8}
+                onPress={() => navigate('HomeScreens')}
+              >
+                <Text style={{ fontSize: 20, color: 'white' }}> Entrar</Text>
+                <Icon
+                  name="chevron-forward-outline"
+                  color="white"
+                  size={30}
+                />
+              </TouchableOpacity>
+            </Animated.View>)
+        } */}

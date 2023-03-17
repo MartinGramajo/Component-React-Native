@@ -18,6 +18,11 @@ export const Navigator = () => {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false,
+            // Podemos modificar el style de nuestra app 
+            // cardStyle: {
+            //     backgroundColor: 'white',
+            // }
+
         }}>
             <Stack.Screen name="HomeScreens" component={HomeScreens} />
             <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
