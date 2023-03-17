@@ -15,7 +15,8 @@ interface Props {
 export const FlatListMenuItem = ({ menuItem }: Props) => {
     const navigation = useNavigation();
 
-    const { colors } = useTheme();
+    // Hook que me permite extraer los colores para el themeDark o default theme
+    // const { colors } = useTheme();
 
     return (
         <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate(menuItem.component)}>
@@ -25,7 +26,7 @@ export const FlatListMenuItem = ({ menuItem }: Props) => {
                     size={23}
                     color="#5856D6"
                 />
-                <Text style={{ ...styles.itemText, color: colors.text }}>
+                <Text style={styles.itemText}>
                     {menuItem.name}
                 </Text>
 

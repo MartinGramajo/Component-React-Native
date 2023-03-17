@@ -11,6 +11,7 @@ import { SectionListScreen } from '../screens/SectionListScreen';
 import { ModalScreen } from '../screens/ModalScreen';
 import { InfiniteScrollScreen } from '../screens/InfiniteScrollScreen';
 import { SlidesScreen } from '../screens/SlidesScreen';
+import { ChangeThemeScreen } from '../screens/ChangeThemeScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,9 +20,9 @@ export const Navigator = () => {
         <Stack.Navigator screenOptions={{
             headerShown: false,
             // Podemos modificar el style de nuestra app 
-            // cardStyle: {
-            //     backgroundColor: 'white',
-            // }
+            cardStyle: {
+                backgroundColor: 'white',
+            }
 
         }}>
             <Stack.Screen name="HomeScreens" component={HomeScreens} />
@@ -35,6 +36,7 @@ export const Navigator = () => {
             <Stack.Screen name="ModalScreen" component={ModalScreen} />
             <Stack.Screen name="InfiniteScrollScreen" component={InfiniteScrollScreen} />
             <Stack.Screen name="SlidesScreen" component={SlidesScreen} />
+            <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
         </Stack.Navigator>
     );
 }
