@@ -1,35 +1,49 @@
 
 import React from 'react';
-import { NavigationContainer, DefaultTheme, DarkTheme, Theme } from '@react-navigation/native';
 import { Navigator } from './src/navigator/Navigator';
+import { ThemeProvider } from './src/context/themeContext/ThemeContext';
 
-
-const customTheme: Theme = {
-  // 1ra consideración: si estará en tema oscuro o no. 
-  dark: true,
-  // 2da consideración agregar los colores
-  colors: {
-    // expandimos el Dark theme (viene con unos colores preestablecidos para los colores)
-    ...DarkTheme.colors,
-    // primary: string,
-    // background: 'grey',
-    // card: string,
-    // text: string,
-    // border: string,
-    // notification: string,
-  }
-}
+// const customTheme: Theme = {
+//   // 1ra consideración: si estará en tema oscuro o no. 
+//   dark: true,
+//   // 2da consideración agregar los colores
+//   colors: {
+//     // expandimos el Dark theme (viene con unos colores preestablecidos para los colores)
+//     ...DarkTheme.colors,
+//     // primary: string,
+//     // background: 'grey',
+//     // card: string,
+//     // text: string,
+//     // border: string,
+//     // notification: string,
+//   }
+// }
 
 const App = () => {
   return (
-    <NavigationContainer
-      // Utilizamos la const customTheme
-      theme={customTheme}
-    >
+    <AppState>
       <Navigator />
-    </NavigationContainer>
+    </AppState>
   );
 };
+
+
+
+//NOTA: no nos olvidemos de enviar los children por parámetros.
+//NOTA2: ASEGURARSE que el <AppState></AppState> sea el padre 
+// del navigatorContainer y toda la demás aplicación.
+//NOTA3: Mejoramos el codigo moviendo el navigatorContainer al navigator.
+// Esto lo hacemos para manejar todo el theme desde el navigator.
+
+// 5-Creamos un component que nos permita colocar 
+// todos nuestros proveedores de contexto.
+const AppState = ({ children }: any) => {
+  return (
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
+  )
+}
 
 export default App;
 
