@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // import { useNavigation } from '@react-navigation/native';
 import { useAnimation } from '../hooks/useAnimation';
 import { StackScreenProps } from '@react-navigation/stack';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 
 // Utilizamos Dimensions para trabajar con el ancho de cada dispositivo
@@ -41,6 +42,9 @@ const items: Slide[] = [
 ]
 
 export const SlidesScreen = ({ navigation }: Props) => {
+
+  //context para personalizar el theme
+  const { theme: { colors, btn } } = useContext(ThemeContext)
 
   //state para volver a cargar el elemento con cada indicador en su posición
   const [activeIndex, setActiveIndex] = useState(0);
@@ -79,11 +83,12 @@ export const SlidesScreen = ({ navigation }: Props) => {
             resizeMode: 'center'
           }}
         />
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={{ ...styles.title, color: colors.primary }}>{item.title}</Text>
         <Text style={styles.subTitle}>{item.desc}</Text>
       </View>
     )
   }
+
 
   return (
     //Utilizamos el safeareaview para protegernos del notch
@@ -144,14 +149,14 @@ export const SlidesScreen = ({ navigation }: Props) => {
             width: 10,
             height: 10,
             borderRadius: 5,
-            backgroundColor: '#5856D6'
+            backgroundColor: colors.primary
           }}
         />
 
         <Animated.View style={{
           opacity
         }} >
-          <TouchableOpacity style={styles.touchableBtn}
+          <TouchableOpacity style={{ ...styles.touchableBtn, backgroundColor: btn }}
             activeOpacity={0.8}
             onPress={() => {
               if (isVisible.current) {

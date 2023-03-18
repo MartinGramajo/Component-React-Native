@@ -1,6 +1,9 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useContext } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { View, Text, StyleSheet } from 'react-native';
+
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 interface Props {
   title: string;
@@ -8,6 +11,10 @@ interface Props {
 
 
 export const HeaderTitle = ({ title }: Props) => {
+
+  //usamos el contexto
+  const { theme: { colors } } = useContext(ThemeContext)
+
   // Solucionamos el Notch 
   const { top } = useSafeAreaInsets();
   return (
@@ -24,7 +31,7 @@ export const HeaderTitle = ({ title }: Props) => {
 
     // elemento o component que usamos como header de nuestro flatlist
     <View style={{ marginTop: top + 20, marginBottom: 20 }}>
-      <Text style={styles.title}> {title}</Text>
+      <Text style={{ ...styles.title, color: colors.text }}> {title}</Text>
     </View>
   )
 }

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Animated, Button } from 'react-native';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 import { useAnimation } from '../hooks/useAnimation';
 
 export const Animation101Screen = () => {
     const { fadeIn, fadeOut, opacity, position, startMovingPosition } = useAnimation()
 
+    const { theme: { colors, btn } } = useContext(ThemeContext)
 
     return (
         <View style={styles.container}>
             <Animated.View style={{
                 ...styles.purpleBox,
+                backgroundColor: colors.primary,
                 marginBottom: 20,
                 opacity,
                 transform: [{
@@ -19,6 +22,7 @@ export const Animation101Screen = () => {
 
             <View style={{ marginBottom: 20 }}>
                 <Button
+                    color={btn}
                     title='fadeIn'
                     // De esta forma llamamos varias funciones
                     onPress={() => {
@@ -30,6 +34,7 @@ export const Animation101Screen = () => {
 
             <View >
                 <Button
+                    color={btn}
                     title='fadOut'
                     onPress={fadeOut}
                 />
@@ -49,5 +54,4 @@ const styles = StyleSheet.create({
         width: 150,
         height: 150,
     },
-
 });

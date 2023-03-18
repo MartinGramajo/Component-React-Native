@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Alert, Button, View } from 'react-native';
 
 import prompt from 'react-native-prompt-android';
@@ -7,7 +7,12 @@ import prompt from 'react-native-prompt-android';
 import { HeaderTitle } from '../components/HeaderTitle';
 import { styles } from '../theme/appTheme';
 
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+
 export const AlertScreen = () => {
+
+  //context para personalizar el theme
+  const { theme: { btn } } = useContext(ThemeContext)
 
   const showAlert = () => {
     // COMPONENT ALERT.(function que crea el alert)
@@ -76,11 +81,13 @@ export const AlertScreen = () => {
       <HeaderTitle title="Alerts" />
       <View style={styles.contentCenter}>
         <Button
+          color={btn}
           title="Mostrar alert"
           onPress={showAlert}
         />
         <View style={{ height: 10 }} />
         <Button
+          color={btn}
           title="Mostrar Prompt"
           onPress={showPrompt}
         />

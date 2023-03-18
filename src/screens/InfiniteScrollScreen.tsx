@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FlatList, View, ActivityIndicator } from 'react-native';
 import { FadeInImage } from '../components/FadeInImage';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const InfiniteScrollScreen = () => {
   //state inicial de elementos para mostrar en nuestro infinite scroll.
   const [numbers, setNumbers] = useState([0, 1, 2, 3, 4, 5])
+
+  //context para personalizar el theme
+  const { theme: { colors } } = useContext(ThemeContext)
 
 
   // function para cargar mas elementos
@@ -21,7 +25,7 @@ export const InfiniteScrollScreen = () => {
     // para visualizar la siguiente carga de imagenes.
     setTimeout(() => {
       setNumbers([...numbers, ...newArray]);
-    }, 1500);
+    }, 2500);
   }
 
   // Function para renderizar los elementos del scroll.
@@ -83,7 +87,7 @@ export const InfiniteScrollScreen = () => {
             justifyContent: 'center',
             alignItems: 'center'
           }}>
-            <ActivityIndicator size={50} color='#5856D6' />
+            <ActivityIndicator size={50} color={colors.primary} />
           </View>
         )}
       />

@@ -23,6 +23,8 @@ type ThemeAction =
 // por ejemplo: el dividerColor
 export interface ThemeState extends Theme {
   currentTheme: 'light' | 'dark',
+  btn: 'red' | '#5856D6',
+  input: 'white'
   dividerColor: string;
 }
 
@@ -30,17 +32,35 @@ export interface ThemeState extends Theme {
 export const LightTheme: ThemeState = {
   currentTheme: 'light',
   dark: false,
-  dividerColor: 'rgba(0,0,0,0.7',
+  btn: '#5856D6',
+  input: 'white',
+  dividerColor: 'rgba(0,0,0,0.7)',
   colors: {
-    primary: '#5856D6',
+    primary: '#084F6A',
     background: 'white',
-    card: 'green',
-    text: 'pink',
-    border: 'orange',
+    card: 'white',
+    text: 'black',
+    border: 'black',
     notification: 'teal',
   },
 }
 
+// Creamos el DarkTheme definiendo todos los colores que va a tener nuestra app
+export const DarkTheme: ThemeState = {
+  currentTheme: 'dark',
+  btn: 'red',
+  dark: true,
+  input: 'white',
+  dividerColor: 'white',
+  colors: {
+    primary: '#75CEDB',
+    background: 'black',
+    card: 'green',
+    text: 'white',
+    border: 'orange',
+    notification: 'teal',
+  },
+}
 // agregamos que el state y el tipo de mi reducer sean de ThemeState
 export const themeReducer = (state: ThemeState, action: ThemeAction): ThemeState => {
 
@@ -49,6 +69,9 @@ export const themeReducer = (state: ThemeState, action: ThemeAction): ThemeState
   switch (action.type) {
     case 'set_light_theme':
       return { ...LightTheme }
+
+    case 'set_dark_theme':
+      return { ...DarkTheme }
     default:
       return state;
   }

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextInput, Keyboard, View, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, Text } from 'react-native';
 import { CustomSwitch } from '../components/CustomSwitch';
 import { HeaderTitle, styles } from '../components/HeaderTitle';
 import { useForm } from '../hooks/useForm';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
 
@@ -31,6 +32,9 @@ export const TextInputScreen = () => {
     isSubscribed: false,
   });
 
+  //context para personalizar el theme
+  const { theme: { input } } = useContext(ThemeContext)
+
   return (
     //KeyboardAvoidingView: debe envolver todo nuestro formulario. 
     // TouchableWithoutFeedback + function keyboard.dismiss() 
@@ -43,7 +47,7 @@ export const TextInputScreen = () => {
           <View style={styles.globalMargin}>
             <HeaderTitle title="TextInputs" />
             <TextInput
-              style={stylesScreen.inputStyle}
+              style={{ ...stylesScreen.inputStyle, backgroundColor: input }}
               placeholder="Ingrese su nombre"
               //auto corrección del texto al usuario.
               autoCorrect={false}
@@ -54,7 +58,7 @@ export const TextInputScreen = () => {
             />
 
             <TextInput
-              style={stylesScreen.inputStyle}
+              style={{ ...stylesScreen.inputStyle, backgroundColor: input }}
               placeholder="Ingrese su email"
               autoCorrect={false}
               autoCapitalize="none"

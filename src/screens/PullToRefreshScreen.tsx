@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, RefreshControl } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { HeaderTitle, styles } from '../components/HeaderTitle';
 // import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const PullToRefreshScreen = () => {
+
+  //context para personalizar el theme
+  const { theme: { colors } } = useContext(ThemeContext)
+
   // este elemento funciona para : 
   // scrollview: carga todo con el component.
   // flatlist : carga lenta o perezosa con el component.
@@ -48,13 +53,13 @@ export const PullToRefreshScreen = () => {
           progressViewOffset={10}
           // Propiedades solo android
           // background color del spinner refresh
-          progressBackgroundColor="#5856D6"
+          progressBackgroundColor={colors.primary}
           // manejo de colores del spinner refresh
           colors={['white', 'black', 'white', 'black']}
 
           // Propiedades IOS
           //backgroundColor
-          style={{ backgroundColor: '#5856D6' }}
+          style={{ backgroundColor: colors.primary }}
           //tintColor del spinner refresh
           tintColor="white"
           // titulo debajo del spinner refresh
