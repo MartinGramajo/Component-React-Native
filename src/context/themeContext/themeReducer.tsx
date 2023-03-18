@@ -27,13 +27,13 @@ export interface ThemeState extends Theme {
 }
 
 // Creamos el lightTheme definiendo todos los colores que va a tener nuestra app
-const LightTheme: ThemeState = {
+export const LightTheme: ThemeState = {
   currentTheme: 'light',
   dark: false,
   dividerColor: 'rgba(0,0,0,0.7',
   colors: {
-    primary: 'red',
-    background: 'blue',
+    primary: '#5856D6',
+    background: 'white',
     card: 'green',
     text: 'pink',
     border: 'orange',
@@ -52,5 +52,4 @@ export const themeReducer = (state: ThemeState, action: ThemeAction): ThemeState
     default:
       return state;
   }
-
 }

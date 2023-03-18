@@ -1,33 +1,48 @@
-import React from 'react';
+// orden del import 
+//1- react 
+import React, { useContext } from 'react';
+
+//2- dependencias 
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreens } from '../screens/HomeScreens';
+import { NavigationContainer } from '@react-navigation/native';
+
+//3- context
+import { ThemeContext } from '../context/themeContext/ThemeContext';
+
+//4- Screens ordenados alfabéticamente
+import { AlertScreen } from '../screens/AlertScreen';
 import { Animation101Screen } from '../screens/Animation101Screen';
 import { Animation102Screen } from '../screens/Animation102Screen';
-import { SwitchScreen } from '../screens/SwitchScreen';
-import { AlertScreen } from '../screens/AlertScreen';
-import { TextInputScreen } from '../screens/TextInputScreen';
+import { ChangeThemeScreen } from '../screens/ChangeThemeScreen';
+import { HomeScreens } from '../screens/HomeScreens';
+import { InfiniteScrollScreen } from '../screens/InfiniteScrollScreen';
+import { ModalScreen } from '../screens/ModalScreen';
 import { PullToRefreshScreen } from '../screens/PullToRefreshScreen';
 import { SectionListScreen } from '../screens/SectionListScreen';
-import { ModalScreen } from '../screens/ModalScreen';
-import { InfiniteScrollScreen } from '../screens/InfiniteScrollScreen';
 import { SlidesScreen } from '../screens/SlidesScreen';
-import { ChangeThemeScreen } from '../screens/ChangeThemeScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import { SwitchScreen } from '../screens/SwitchScreen';
+import { TextInputScreen } from '../screens/TextInputScreen';
+
 
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
+    // usamos el context para dar traer nuestro themeContext
+    // y poder darle color a distintas parte de nuestra app
+    const { theme } = useContext(ThemeContext)
+
+
     return (
         <NavigationContainer
-        // Utilizamos la const customTheme
-        // theme={customTheme}
+            // Utilizamos la const customTheme
+            theme={theme}
         >
             <Stack.Navigator screenOptions={{
                 headerShown: false,
                 // Podemos modificar el style de nuestra app 
-                cardStyle: {
-                    backgroundColor: 'white',
-                }
+                // cardStyle: {
+                //     backgroundColor: 'white',
+                // }
 
             }}>
                 <Stack.Screen name="HomeScreens" component={HomeScreens} />

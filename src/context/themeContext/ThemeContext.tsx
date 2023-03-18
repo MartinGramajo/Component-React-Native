@@ -1,11 +1,14 @@
-import React, { createContext } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { themeReducer, ThemeState, LightTheme } from './themeReducer';
 
 
 // 4- creamos la interface para saber que props tiene nuestro context
 //interface para determinar como va a lucir nuestro context
 // Contiene un theme y dos funciones para cambiar el theme.
 interface ThemeContextProps {
-  theme: any;
+  // Ahora que tenemos el reducer creado 
+  // podemos definir el tipo del theme(asi lucirá nuestro state)
+  theme: ThemeState;
   setDarkTheme: () => void;
   setLightTheme: () => void;
 }
@@ -23,15 +26,17 @@ export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({ children }: any) => {
   // theme(el cual va a salir de nuestro reducer)
-  const theme = {}
+  const [theme, dispatch] = useReducer(themeReducer, LightTheme); //TODO: Leer el tema global...
 
 
   // creamos las funciones 
   const setDarkTheme = () => {
+    dispatch({ type: 'set_dark_theme' })
     console.log('setDarkTheme')
   }
 
   const setLightTheme = () => {
+    dispatch({ type: 'set_light_theme' })
     console.log('setLightTheme')
   }
 
